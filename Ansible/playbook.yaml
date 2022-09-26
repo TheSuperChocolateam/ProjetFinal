@@ -5,17 +5,36 @@
   become: true
   
   tasks:
-  - name: installa dipendenze
+  - name: Install aptitude
     apt:
-      name: "{{ item }}"
+      name: aptitude
+      state: latest
+      update_cache: true
+
+  - name: Install required system packages
+    apt:
       state: present
-      update_cache: yes
-      with_items:
+      update_cache: true
+      pkg:
         - apt-transport-https
         - ca-certificates
         - curl
-        - gnupg-agent
         - software-properties-common
+        - python3-pip
+        - virtualenv
+        - python3-setuptools
+  
+#  - name: installa dipendenze
+#    apt:
+#      name: "{{item}}"
+#      state: present
+#      update_cache: yes
+#      loop:
+#        - apt-transport-https
+#        - ca-certificates
+#        - curl
+#        - gnupg-agent
+#        - software-properties-common
     
   - name: aggiungi chiave GPG
     apt_key:
