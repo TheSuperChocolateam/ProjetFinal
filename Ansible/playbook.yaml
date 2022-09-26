@@ -43,15 +43,14 @@
     
   - name: aggiungi repository docker
     apt_repository:
-      repo: deb https://download.docker.com/linux/debian bullseye stable
+      repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bullseye stable 
       state: present
     
   - name: installa docker
     apt:
-      name: "{{item}}"
       state: latest
       update_cache: yes
-      loop:
+      pkg:
         - docker-ce
         - docker-ce-cli
         - containerd.io
