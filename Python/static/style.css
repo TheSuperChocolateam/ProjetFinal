@@ -1,0 +1,39 @@
+body {
+    padding: 2em;
+}
+
+h1 {
+    text-align: center;
+}
+
+li {
+    border: 0.2em solid rgba(56, 56, 56, 0.4);
+    background-color: rgba(240, 252, 251, 0.726);
+    border-radius: 1em;
+    padding: 1em;
+    list-style: none;
+}
+
+#tab_flux {
+    border-collapse: collapse;
+    border: 0.2em solid rgba(56, 56, 56, 0.4);
+    border-radius: 1em;
+}
+
+th,
+td {
+    border: 0.2em solid rgba(56, 56, 56, 0.4);
+    background-color: rgba(246, 252, 251, 0.5);
+    padding: 1em;
+}
+
+.titre_choco {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.choco {
+    height: 5em;
+    width: 7em;
+}

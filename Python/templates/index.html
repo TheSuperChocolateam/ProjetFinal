@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,33 @@
     <link rel="stylesheet" href="static/style.css">
     <title>ProjetFinal-groupe1</title>
 </head>
+
 <body>
-    <h1>Hello World</h1>
-    <p>{{ entry }}</p>
+    <div class="titre_choco">
+        <img src="http://rosatubes.r.o.pic.centerblog.net/o/7fc748c3.png" class="choco"/><h1>The Super Chocolateam Project</h1><img src="http://rosatubes.r.o.pic.centerblog.net/o/7fc748c3.png" class="choco"/>
+    </div>
+    </br>
+    <h2>Dernières données du flux RSS NIST News</h2>
+
+    <table id="tab_flux">
+        <tr>
+            <th> Date</th>
+            <th> Titre </th>
+            <th> Description </th>
+            <th> Lien </th>
+        </tr>
+
+        {% for i in range(0, len)%}
+        <tr>
+            <td> {{ entries[i].date }} </td>
+            <td> {{ entries[i].title }} </td>
+            <td> {{ entries[i].description }} </td>
+            <td><a href="{{ entries[i].link }}" target="_blank" title="News">Voir la news</a></td>
+        </tr>
+        {%endfor%}
+
+    </table>
+
 </body>
+
 </html>
