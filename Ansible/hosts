@@ -1,2 +1,2 @@
 [docker]
-192.168.1.19 #ansible_ssh_user=debian ansible_ssh_pass=debian
+192.168.27.131 #ansible_ssh_user=debian ansible_ssh_pass=debian
