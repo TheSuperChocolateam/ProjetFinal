@@ -1,7 +1,7 @@
 ---
 - name: docker
   hosts: docker
-  remote_user: debian
+  remote_user: Docker11
   become: true
   
   tasks:
@@ -10,6 +10,11 @@
       name: aptitude
       state: latest
       update_cache: true
+
+  - name: creation du repertoire keyrings
+    file: 
+      path: /etc/apt/keyrings/
+      state: directory
 
   - name: Install required system packages
     apt:
@@ -31,7 +36,7 @@
       keyring: /etc/apt/keyrings/docker.gpg
 
      
-  - name: aggiungi repository docker
+  - name: add repository docker
     apt_repository:
       repo: "deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable" 
       state: present
