@@ -14,7 +14,7 @@ RUN pip install -r requirement.txt
 
 ENV PYTHONUNBUFFERED 1
 
-EXPOSE 8001
+EXPOSE 5501
 
 
 
