@@ -1,9 +1,29 @@
 body {
     padding: 2em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
     text-align: center;
+    color: #114b73
+}
+
+h2 {
+    margin: 0em;
+    margin-right: 0.5em;
+    color: #114b73;
+}
+
+svg {
+    width: 2em;
+    height: 2em;
+}
+
+.titre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
 }
 
 li {
@@ -20,8 +40,8 @@ li {
     border-radius: 1em;
 }
 
-th,
-td {
+#tab_flux th,
+#tab_flux td {
     border: 0.2em solid rgba(56, 56, 56, 0.4);
     background-color: rgba(246, 252, 251, 0.5);
     padding: 1em;
@@ -36,4 +56,47 @@ td {
 .choco {
     height: 5em;
     width: 7em;
+}
+
+.partie {
+    margin : 2em;
+}
+
+#tab_alertes th, #tab_alertes td {
+    border: 0.1em solid #114b73;
+    height: 3em; 
+    width: 8em;
+    text-align: center;
+    padding: 0.2em;
+}
+
+.tabTitre{
+    background-color:  #8a8b8b38 ;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #114b73;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-top: 0.1em solid #114b73;
+}
+
+footer p{
+    margin: 0.5em;
+    font-size: 0.8em;
 }
