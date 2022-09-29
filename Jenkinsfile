@@ -7,10 +7,11 @@ node {
     }
     stage('builder le docker-compose.yaml') { 
           def myEnv = docker.build '10.1.0.10:8082/my-environment:snapshot'
+          myEnv.push() // record this snapshot (optional)
     }
     stage('push sur Nexus') { 
-          myEnv.push() // record this snapshot (optional)
-
+          
+        sh 'echo coucou'
     }
    } finally{
 
