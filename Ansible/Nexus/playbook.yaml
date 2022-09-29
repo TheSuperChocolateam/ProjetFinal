@@ -1,7 +1,7 @@
 ---
 - name: nexus
   hosts: nexus
-  remote_user: Registry
+  remote_user: Registry1
   become: true
   
   tasks:  
