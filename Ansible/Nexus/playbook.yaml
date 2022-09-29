@@ -1,0 +1,59 @@
+---
+- name: nexus
+  hosts: nexus
+  remote_user: Registry
+  become: true
+  
+  tasks:  
+  - name: install wget
+    apt:
+      name: wget
+      state: latest
+      update_cache: yes
+  - name: install JRE 8
+    apt:
+      name: openjdk-8-jre
+      state: latest
+  - name: Create nexus User
+    user:
+      name: nexus
+      state: present
+      shell: /bin/bash
+  - name: create installation dir
+    file:
+      path: /opt/nexus
+      state: directory
+      mode: 0755
+  - name: Download nexus
+    unarchive:
+      src: https://download.sonatype.com/nexus/3/nexus-3.35.0-02-unix.tar.gz
+      dest: /opt/nexus/
+      remote_src: yes
+    args:
+      creates: /opt/nexus/nexus-3.35.0-02
+  - name: Change /opt/nexus/ owner
+    file:
+      path: /opt/nexus/
+      owner: nexus
+      group: nexus
+      recurse: yes
+  - name: configure nexus to run with user nexus
+    lineinfile:
+      path: /opt/nexus/nexus-3.35.0-02/bin/nexus.rc
+      line: "run_as_user=\"nexus\""
+  - name: create service nexus
+    file:
+      src: /opt/nexus/nexus-3.35.0-02/bin/nexus
+      dest: /etc/init.d/nexus
+      state: link
+  - name: start nexus
+    systemd:
+      name: nexus
+      state: started
+      enabled: true
+      daemon_reload: yes
+---
+- hosts: localhost
+  become: true
+  roles:
+    - nexus
