@@ -1,11 +1,16 @@
 node {  
-    stage('echo') { 
-        sh 'echo TOTO' 
+   try{
+    stage('cloner le repository') {
+        sh 'git clone https://github.com/TheSuperChocolateam/ProjetFinal.git' 
+        sh 'cd ProjetFinal/'
     }
-    stage('Test') { 
-        sh 'echo TITI'
+    stage('builder le docker-compose.yaml') { 
+        sh 'docker-compose up'
     }
-    stage('Deploy') { 
-        sh 'echo TATA'
+    stage('push sur Nexus') { 
+        sh echo 'titi'
     }
+   } finally{
+       cleanWS()
+     }
 }
