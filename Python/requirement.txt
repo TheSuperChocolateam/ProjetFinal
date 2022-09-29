@@ -1,3 +1,5 @@
 flask>=2.2.2
 feedparser>=6.0.10
 requests>=2.28.1
+matplotlib>=3.6.0
+urllib2-file>=0.2.1
