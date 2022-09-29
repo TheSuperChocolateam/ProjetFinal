@@ -3,6 +3,7 @@ node {
     stage('cloner le repository') {
         sh 'git clone https://github.com/TheSuperChocolateam/ProjetFinal.git' 
         sh 'cd ProjetFinal/'
+        sh 'pwd'
         sh 'git fetch origin dev:dev'
         sh 'git checkout dev'
     }
