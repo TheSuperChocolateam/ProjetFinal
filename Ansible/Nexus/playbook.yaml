@@ -5,6 +5,10 @@
   become: true
   
   tasks:  
+  - name: add repository debian - install openjdk-8-jre
+    apt_repository:
+      repo: "deb http://deb.debian.org/debian/ sid main" 
+      state: present
   - name: install wget
     apt:
       name: wget
@@ -52,8 +56,3 @@
       state: started
       enabled: true
       daemon_reload: yes
----
-- hosts: localhost
-  become: true
-  roles:
-    - nexus
