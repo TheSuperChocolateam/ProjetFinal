@@ -1,11 +1,6 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-                sh 'svn --version'
-            }
-        }
-    }
+node {
+  git 'https://github.com/TheSuperChocolateam/ProjetFinal.git'
+  checkout dev
+  def newApp = docker.build "mycorp/myapp:${env.BUILD_TAG}"
+  newApp.push()
 }
