@@ -1,0 +1,65 @@
+---
+- name: docker
+  hosts: docker
+  remote_user: ansible
+  become: true
+  
+  tasks:
+  - name: Install aptitude
+    apt:
+      name: aptitude
+      state: latest
+      update_cache: true
+
+  - name: creation du repertoire keyrings
+    file: 
+      path: /etc/apt/keyrings/
+      state: directory
+
+  - name: Install required system packages
+    apt:
+      state: present
+      update_cache: true
+      pkg:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+        - python3-pip
+        - virtualenv
+        - python3-setuptools
+  
+  - name: aggiungi chiave GPG
+    apt_key:
+      url: https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg
+      state: present
+      keyring: /etc/apt/keyrings/docker.gpg
+
+     
+  - name: add repository docker
+    apt_repository:
+      repo: "deb [arch={{ ansible_architecture }} signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable" 
+      state: present
+    
+  - name: installa docker
+    apt:
+      state: latest
+      update_cache: yes
+      pkg:
+        - docker
+        - docker-compose
+        - docker.io
+        - docker-registry
+    
+  - name: assicurati che docker sia attivo
+    service:
+      name: docker
+      state: started
+      enabled: yes
+      
+  handlers:
+  - name: restart docker
+    service: 
+      name: docker 
+      state: restarted
+...

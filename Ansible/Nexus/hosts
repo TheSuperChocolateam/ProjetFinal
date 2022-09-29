@@ -1,0 +1,2 @@
+[nexus]
+10.1.0.10 #ansible_ssh_user=debian ansible_ssh_pass=debian
