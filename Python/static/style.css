@@ -62,7 +62,19 @@ li {
     margin : 2em;
 }
 
-#tab_alertes th, #tab_alertes td {
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tab_alertes th, #tab_alertes td, #tab_graph th, #tab_graph td {
     border: 0.1em solid #114b73;
     height: 3em; 
     width: 8em;
