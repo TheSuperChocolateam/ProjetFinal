@@ -13,6 +13,8 @@ node {
         sh echo 'titi'
     }
    } finally{
+       sh ' cd ..'
+       sh ' rm -rf ProjetFinal'
        cleanWS()
      }
 }
