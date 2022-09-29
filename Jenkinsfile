@@ -3,6 +3,7 @@ node {
    try{
     stage('cloner le repository') {
         git branch: 'dev', url: 'https://github.com/TheSuperChocolateam/ProjetFinal.git'
+        sh 'whoami'
     }
     stage('builder le docker-compose.yaml') { 
           def myEnv = docker.build 'my-environment:snapshot'
