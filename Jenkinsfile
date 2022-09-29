@@ -1,6 +1,13 @@
-node {
-  git 'https://github.com/TheSuperChocolateam/ProjetFinal.git'
-  //checkout dev
-  //def newApp = docker.build "mycorp/myapp:${env.BUILD_TAG}"
-  //newApp.push()
+pipeline {
+  agent any
+  parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'dev', name: 'BRANCH', type: 'PT_BRANCH'
+  }
+  stages {
+    stage('Example') {
+      steps {
+        git branch: "${params.BRANCH}", url: 'https://github.com/TheSuperChocolateam/ProjetFinal.git'
+      }
+    }
+  }
 }
