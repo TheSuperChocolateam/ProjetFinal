@@ -1,7 +1,7 @@
 ---
 - name: nexus
   hosts: nexus
-  remote_user: Registry1
+  remote_user: ansible
   become: true
   
   tasks:  

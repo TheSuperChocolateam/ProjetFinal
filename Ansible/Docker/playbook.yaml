@@ -1,7 +1,7 @@
 ---
 - name: docker
   hosts: docker
-  remote_user: Docker11
+  remote_user: ansible
   become: true
   
   tasks:
