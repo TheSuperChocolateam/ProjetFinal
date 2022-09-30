@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
-# Récupération flux RSS des alertes sécurités NVD
+# Récupération flux RSS des alertes sécurités NVD avec requests
 response_info = requests.get(
     "https://services.nvd.nist.gov/rest/json/cves/2.0/?pubStartDate=2022-09-01T00:00:00.000-05:00&pubEndDate=2022-09-30T23:59:59.999-05:00").json()
 
@@ -52,7 +52,7 @@ p.gca().add_artist(my_circle)
 plt.savefig('static/donut.png')
 
 
-# Récupération flux RSS news Nist
+# Récupération flux RSS news NVD avec feedparser
 NewsFeedNist = feedparser.parse(
     "https://www.nist.gov/news-events/cybersecurity/rss.xml")
 tab_entries = []
