@@ -10,7 +10,7 @@ node {
           myEnv.push() // record this snapshot (optional)
     }
     stage('run image on remote host') { 
-          env.DOCKER_HOST = 'tcp://10.1.0.10:4243' 
+          env.DOCKER_HOST = 'tcp://10.1.0.11:4243' 
           docker.image('mychocolateam:snapshot').inside ("-p 80:5501"){ "echo toto  " } 
         //
     }
