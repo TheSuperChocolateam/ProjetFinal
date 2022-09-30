@@ -72,7 +72,7 @@
     <p>Les présentes données se basent sur le flux rss des alertes sécurité du mois de septembre 2022</p>
     <div class="dashboard">
         <div class="tableau">
-            <h4>5 dernières alertes de sécurité</h4>
+            <h4>Dernières alertes de sécurité</h4>
             <table id="tab_alertes">
                 <tr class="tabTitre">
                     <th> ID </th>
@@ -81,7 +81,7 @@
                     <th> Level </th>
                 </tr>
 
-                {% for i in range(-5, -1)%}
+                {% for i in range(-9, -1)%}
                 <tr>
                     <td> {{ securities[i].id }} </td>
                     <td> {{ securities[i].date }} </td>
