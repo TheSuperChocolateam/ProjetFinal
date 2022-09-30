@@ -6,7 +6,7 @@ node {
         sh 'whoami'
     }
     stage('builder le docker-compose.yaml') { 
-          def myEnv = docker.build '10.1.0.10:8082/my-environment:snapshot'
+          def myEnv = docker.build '10.1.0.10:8082/myChocolatTeam:snapshot'
           myEnv.push() // record this snapshot (optional)
     }
     stage('push sur Nexus') { 
