@@ -9,9 +9,9 @@ node {
           def myEnv = docker.build '10.1.0.10:8082/mychocolateam:snapshot'
           myEnv.push() // record this snapshot (optional)
     }
-    stage('push sur Nexus') { 
+    stage('run image on remote host') { 
           env.DOCKER_HOST = 'tcp://10.1.0.10:4243' 
-          docker.image('mychocolateam:snapshot').withRun('-p 80:5501') 
+          docker.image('mychocolateam:snapshot')
         //
     }
    } finally{
