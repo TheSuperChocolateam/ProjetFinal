@@ -14,16 +14,11 @@ h2 {
     color: #114b73;
 }
 
-svg {
-    width: 2em;
-    height: 2em;
-}
-
 .titre {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1em;
+    margin-bottom: 2.5em;
 }
 
 li {
@@ -68,10 +63,11 @@ li {
     justify-content: space-around;
 }
 
-.graph {
+.graph, .tableau {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1em;
 }
 
 #tab_alertes th, #tab_alertes td, #tab_graph th, #tab_graph td {

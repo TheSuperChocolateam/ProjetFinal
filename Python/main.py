@@ -10,6 +10,7 @@ response_info = requests.get(
     "https://services.nvd.nist.gov/rest/json/cves/2.0/?pubStartDate=2022-09-01T00:00:00.000-05:00&pubEndDate=2022-09-30T23:59:59.999-05:00").json()
 
 cve_list = []
+
 low = 0
 medium = 0
 high = 0
@@ -48,7 +49,7 @@ my_circle = plt.Circle((0, 0), 0.4, color='white')
 p = plt.gcf()
 p.gca().add_artist(my_circle)
 # plt.show()
-plt.savefig('./static/donut.png')
+plt.savefig('static/donut.png')
 
 
 # Récupération flux RSS news Nist
