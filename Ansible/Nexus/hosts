@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-[docker]
-192.168.27.131 #ansible_ssh_user=debian ansible_ssh_pass=debian
-=======
 [nexus]
 10.1.0.10 #ansible_ssh_user=debian ansible_ssh_pass=debian
->>>>>>> dev
 [nexus]
 10.1.0.10 #ansible_ssh_user=debian ansible_ssh_pass=debian
