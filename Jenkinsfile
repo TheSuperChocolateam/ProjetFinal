@@ -11,7 +11,7 @@ node {
     }
     stage('run image on remote host') { 
           env.DOCKER_HOST = 'tcp://10.1.0.11:4243' 
-          docker.image('10.1.0.10:8082/mychocolateam:snapshot').inside ("-p 80:5501"){ "echo toto  " } 
+          docker.image('10.1.0.10:8082/mychocolateam:snapshot').inside ("-d -p 80:5501"){ "echo toto  " } 
         //
     }
    } finally{
