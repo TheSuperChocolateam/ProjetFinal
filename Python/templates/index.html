@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>ProjetFinal-groupe1</title>
+    <script src="https://kit.fontawesome.com/19555fa88c.js" crossorigin="anonymous"></script>
+</head>
+<!-- En-tête -->
+<header>
+    <div class="titre_choco">
+        <img src="http://rosatubes.r.o.pic.centerblog.net/o/7fc748c3.png" class="choco" />
+        <h1>The Super Chocolateam Project</h1><img src="http://rosatubes.r.o.pic.centerblog.net/o/7fc748c3.png"
+            class="choco" />
+    </div>
+</header>
+
+<section class="partie intro">
+    <div class="titre">
+        <img alt="Icon for News NVD" src="https://nvd.nist.gov/site-media/images/general/A_Brief_History.png"
+            style="width: 300px; height: 237px;" title="Helping you comply with BOD 22-01">
+        <h2>Informations</h2>
+    </div>
+    <p>Ce site a pour but de récupérer et présenter les données des flux RSS news et alertes sécurités de la NVD,
+        National Vulnerability Database.</p>
+    <p>Le NVD est le référentiel du gouvernement américain des données de gestion des vulnérabilités basées sur les
+        normes représentées à l'aide du protocole SCAP (Security Content Automation Protocol). Ces données
+        permettent
+        d'automatiser la gestion des vulnérabilités, la mesure de la sécurité et la conformité. Le NVD comprend des
+        bases de données de références de listes de contrôle de sécurité, de failles logicielles liées à la
+        sécurité, de
+        mauvaises configurations, de noms de produits et de mesures d'impact.</p>
+    <p>Source: https://nvd.nist.gov/general</p>
+</section>
+<!-- Partie données flux RSS des News du CVE -->
+<section class="partie news">
+    <div class="titre">
+        <img alt="Icon for News NVD" src="https://nvd.nist.gov/site-media/images/LandingPage/apiGuidance800x632.png"
+            style="width: 300px; height: 237px;" title="Helping you comply with BOD 22-01">
+        <h2>Dernières NVD News</h2>
+    </div>
+    <table id="tab_flux">
+        <tr>
+            <th> Date</th>
+            <th> Titre </th>
+            <th> Description </th>
+            <th> Lien </th>
+        </tr>
+
+        {% for i in range(0, len)%}
+        <tr>
+            <td> {{ entries[i].date }} </td>
+            <td> {{ entries[i].title }} </td>
+            <td> {{ entries[i].description }} </td>
+            <td><a href="{{ entries[i].link }}" target="_blank" title="News">Voir la news</a></td>
+        </tr>
+        {%endfor%}
+
+    </table>
+</section>
+<!-- Partie données flux RSS des alertes de sécurités du CVE sur le mois de septembre 2022 -->
+<section class="partie alertes">
+    <div class="titre">
+        <img alt="Icon for CISA Known Exploited Vulnerabilities Catalog Announcement"
+            src="https://nvd.nist.gov/site-media/images/LandingPage/kevCatalog800x632.png"
+            style="width: 300px; height: 237px;" title="Helping you comply with BOD 22-01">
+        <h2>Dashboard</h2>
+    </div>
+    <p>Les présentes données se basent sur le flux rss des alertes sécurité du mois de septembre 2022</p>
+    <div class="dashboard">
+        <div class="tableau">
+            <h4>5 dernières alertes de sécurité</h4>
+            <table id="tab_alertes">
+                <tr class="tabTitre">
+                    <th> ID </th>
+                    <th> Date </th>
+                    <th> Score </th>
+                    <th> Level </th>
+                </tr>
+
+                {% for i in range(-5, -1)%}
+                <tr>
+                    <td> {{ securities[i].id }} </td>
+                    <td> {{ securities[i].date }} </td>
+                    <td> {{ securities[i].score }} </td>
+                    <td> {{ securities[i].level }} </td>
+                </tr>
+                {%endfor%}
+
+            </table>
+        </div>
+        <div class="graph">
+            <div class="data">
+                <h4>Répartition des alertes selon leur niveau de menace</h4>
+                <table id="tab_graph">
+                    <tr class="tabTitre">
+                        <th> LOW </th>
+                        <th> MEDIUM </th>
+                        <th> HIGH </th>
+                        <th> CRITICAL </th>
+                        <th> Aucune donnée </th>
+                        <th> Total </th>
+                    </tr>
+
+                    <tr>
+                        <td> {{ low }} </td>
+                        <td> {{ medium }} </td>
+                        <td> {{ high }} </td>
+                        <td> {{ critical }} </td>
+                        <td> {{ na }} </td>
+                        <td> {{ lenAlertes }} </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="donut">
+                <img src="static/donut.png" />
+            </div>
+        </div>
+</section>
+<footer>
+    <p>©TheSuperChocolateam</p>
+    <p>|</p>
+    <p><a href="https://github.com/TheSuperChocolateam/ProjetFinal" target="_blank">GitHub</a></p>
+</footer>
+</body>
+
+</html>
